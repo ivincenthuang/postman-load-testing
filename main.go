@@ -37,8 +37,8 @@ func worker(settings common.WorkerSettings, aggregatorWorker *aggregator.Aggrega
 
 	var newmanArgs = []string{
 		"run", settings.CollectionPath,
-		fmt.Sprintf("-e%s", settings.EnvironmentPath),
-		"-rteamcity,cli",
+		"-e", settings.EnvironmentPath,
+		"-r", "teamcity,cli",
 	}
 
 	if settings.Delay > 0 {
@@ -46,7 +46,7 @@ func worker(settings common.WorkerSettings, aggregatorWorker *aggregator.Aggrega
 	}
 
 	if settings.Iterations > 0 {
-		newmanArgs = append(newmanArgs, fmt.Sprintf("-n%v", settings.Iterations))
+		newmanArgs = append(newmanArgs, fmt.Sprintf("-n %v", settings.Iterations))
 	}
 
 	finalCmdString := newmanExecutable + " " + strings.Join(newmanArgs[:], " ")
@@ -59,7 +59,7 @@ func worker(settings common.WorkerSettings, aggregatorWorker *aggregator.Aggrega
 
 	err := cmd.Start()
 	if err != nil {
-		panic(err);
+		panic(err)
 	}
 
 	out_scanner.OutScanner(stdout, stderr, aggregatorWorker, threadNumber)
@@ -90,7 +90,7 @@ func main() {
 	aggregatorWorker := aggregator.CreateAggregator(nParallel * settings.Iterations)
 	consoleStatusWorker := console_printer.CreateConsoleStatusPrinter(aggregatorWorker)
 
-	for i := 0; i < nParallel; i ++ {
+	for i := 0; i < nParallel; i++ {
 		wg.Add(1)
 		go worker(settings, aggregatorWorker, i+1)
 	}
