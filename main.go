@@ -1,19 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"os/exec"
 	"context"
-	"sync"
 	"flag"
+	"fmt"
 	"os"
-	"postman-load-testing/common"
-	"postman-load-testing/scanner"
-	"postman-load-testing/logger"
+	"os/exec"
 	"strings"
-	"postman-load-testing/aggregator"
-	"postman-load-testing/console_printer"
+	"sync"
 	"time"
+
+	"github.com/flash286/postman-load-testing/aggregator"
+	"github.com/flash286/postman-load-testing/common"
+	"github.com/flash286/postman-load-testing/console_printer"
+	"github.com/flash286/postman-load-testing/logger"
+	"github.com/flash286/postman-load-testing/scanner"
 )
 
 var (

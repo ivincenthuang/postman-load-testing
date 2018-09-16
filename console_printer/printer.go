@@ -1,16 +1,19 @@
 package console_printer
 
 import (
-	"github.com/gosuri/uilive"
-	"fmt"
 	"bytes"
-	"postman-load-testing/aggregator"
-	"github.com/olekukonko/tablewriter"
-	"sort"
+	"fmt"
 	"io"
-	"postman-load-testing/common"
-	"postman-load-testing/logger"
+	"sort"
 	"time"
+
+	"github.com/flash286/postman-load-testing/logger"
+
+	"github.com/flash286/postman-load-testing/common"
+
+	"github.com/flash286/postman-load-testing/aggregator"
+	"github.com/gosuri/uilive"
+	"github.com/olekukonko/tablewriter"
 )
 
 type ConsoleStatusPrinter struct {
@@ -39,7 +42,7 @@ func (p *ConsoleStatusPrinter) Run() {
 			writer.Stop()
 			buffer := bytes.NewBufferString("\n")
 			finalTable := CreateStatTable(buffer)
-			finalTable.SetCaption(true,"Final Results")
+			finalTable.SetCaption(true, "Final Results")
 			renderResultTable(finalTable, p.aggregateWorker.Stat, p.aggregateWorker.RequestsThroughput)
 			logger.Log.Println(buffer.String())
 			return

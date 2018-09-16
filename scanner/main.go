@@ -1,15 +1,16 @@
 package out_scanner
 
 import (
-	"io"
 	"bufio"
-	"time"
-	"strconv"
-	"regexp"
-	"postman-load-testing/common"
-	"postman-load-testing/logger"
 	"fmt"
-	"postman-load-testing/aggregator"
+	"io"
+	"regexp"
+	"strconv"
+	"time"
+
+	"github.com/flash286/postman-load-testing/aggregator"
+	"github.com/flash286/postman-load-testing/common"
+	"github.com/flash286/postman-load-testing/logger"
 )
 
 var (
